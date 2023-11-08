@@ -1,0 +1,48 @@
+&control
+calculation = 'relax'
+prefix = 'MoS2-V-O'
+restart_mode='from_scratch'
+nstep=200
+forc_conv_thr = 0.01,
+pseudo_dir = '../pseudo'
+outdir = './'
+wfcdir = './'
+/
+&system
+nspin = 1,
+ecutwfc = 80,
+nat = 36
+occupations = 'smearing'
+ibrav = 0,  
+degauss = 0.01
+smearing = 'gaussian'
+tot_charge = 0.0
+ntyp = 3
+ecutrho = 400,
+input_dft = "rVV10"
+/
+&electrons
+electron_maxstep = 250,
+conv_thr = 1e-06,
+mixing_mode = 'local-TF'
+mixing_beta = 0.7
+/
+&ions
+ion_dynamics = 'bfgs',
+/
+&cell
+cell_dynamics = 'bfgs',
+cell_dofree = '2Dxy'
+/
+
+CELL_PARAMETERS angstrom
+9.45676  0.0  0.0
+0.0  10.9289  0.0
+0.0  0.0  24.9999
+
+K_POINTS gamma
+
+ATOMIC_SPECIES
+Mo 95.94  Mo_ONCV_PBE-1.0.oncvpsp.upf
+S 32.065  s_pbe_v1.4.uspp.F.UPF
+H 1.00794 H_ONCV_PBE-1.0.oncvpsp.upf
